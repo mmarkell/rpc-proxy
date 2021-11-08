@@ -207,7 +207,14 @@ func (t *myTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	}
 
 	gotils.L(ctx).Info().Print("Forwarding request")
+	
 	req.Host = req.RemoteAddr //workaround for CloudFlare
+
+	if methods[0] == "eth_sendRawTransaction" {
+        req.URL, _ = url.Parse("https://proxy.roninchain.com/free-gas-rpc")
+        req.Host = "proxy.roninchain.com" //workaround for CloudFlare
+    }
+	
 	return http.DefaultTransport.RoundTrip(req)
 }
 
