@@ -8,6 +8,9 @@ A proxy for `web3` JSONRPC featuring:
 - method filtering
 - stats
 
+## Modification
+This fork simply adapts the rpc-proxy to work with the Ronin Sidechain, It's the same in every other way.
+
 ## Getting Started
 
 ### Prerequisites
